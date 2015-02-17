@@ -46,10 +46,10 @@
     self.helpManager = [[OTOHelpManager alloc] init];
 
     __weak typeof(self) welf = self;
-    NSString *urlString = [NSString stringWithFormat:@"http://development.onato.com/FAQs/json.php?appName=%@&language=%@",
-                           self.appName, self.language];
-//    NSString *urlString = [NSString stringWithFormat:@"http://localhost:8080/FAQs/json.php?appName=%@&language=%@",
-//                           self.appName, self.language];
+//    NSString *server = @"http://development.onato.com";
+    NSString *server = @"http://localhost:8888/";
+    NSString *urlString = [NSString stringWithFormat:@"%@/FAQs/json.php?appName=%@&language=%@",
+                           server, self.appName, self.language];
 
     [self.helpManager GET:urlString
                   success:^(NSArray *faqs, NSString *contact)
