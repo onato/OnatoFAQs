@@ -13,13 +13,9 @@ $currentTitle = "";
 $currentContent = "";
 
 foreach ($lines as $line) {
-    $subject = $line;
-    $pattern = '/^\* .*/';
-    if (substr($line, 0, 1) == "#") {
-        $pattern = '/^# .*/';
-    }
-    if(preg_match($pattern, $subject)) {
-        if (strlen($currentTitle)>0) {
+    if(isTitleLine($line)) {
+        $hasFinishedSection = strlen($currentTitle)>0;
+        if ($hasFinishedSection) {
             $faqs[] = array("title"=>$currentTitle, "detail"=>$currentContent);
         }
         $currentTitle = $line;
@@ -27,12 +23,15 @@ foreach ($lines as $line) {
     }else{
         $currentContent .= $line."\n";
     }
-
 }
 
 $help = array('faqs' => $faqs, 'contact' => $contactMarkdown);
 
 print_r(json_encode($help));
+
+function isTitleLine($line) {
+    return preg_match('/^# .*/', $line);
+}
 
 ?>
 
