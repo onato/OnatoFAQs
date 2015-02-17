@@ -18,10 +18,10 @@ foreach ($lines as $line) {
         if ($hasFinishedSection) {
             $faqs[] = array("title"=>$currentTitle, "detail"=>$currentContent);
         }
-        $currentTitle = $line;
+        $currentTitle = rtrim($line, "\n");
         $currentContent = "";
     }else{
-        $currentContent .= $line."\n";
+        $currentContent .= $line;
     }
 }
 
