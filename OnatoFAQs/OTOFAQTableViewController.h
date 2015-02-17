@@ -21,7 +21,4 @@
  */
 @property (nonatomic, copy) NSString *language;
 
-//@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, weak) IBOutlet UITextView *contactTextView;
-
 @end

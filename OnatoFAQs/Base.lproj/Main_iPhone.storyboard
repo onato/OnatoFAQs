@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--FAQs-->
@@ -24,22 +25,7 @@
                         <view key="tableFooterView" contentMode="scaleToFill" id="Xwh-BD-ILk">
                             <rect key="frame" x="0.0" y="526" width="320" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ik8-dT-Aie">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="320" id="d3G-bf-hNr"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name=".LucidaGrandeUI" family=".Lucida Grande UI" pointSize="11"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
-                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="Ik8-dT-Aie" secondAttribute="bottom" id="YNc-Ms-yDv"/>
-                                <constraint firstAttribute="centerX" secondItem="Ik8-dT-Aie" secondAttribute="centerX" id="tRR-y8-sjS"/>
-                                <constraint firstItem="Ik8-dT-Aie" firstAttribute="top" secondItem="Xwh-BD-ILk" secondAttribute="top" id="vSJ-hq-fjy"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="zBf-iw-5Sp" style="IBUITableViewCellStyleDefault" id="xB3-0J-ZR0">
@@ -62,6 +48,30 @@
                                     <segue destination="qSC-mg-aXF" kind="push" id="o9x-dn-Yrv"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="171" id="qjv-Wv-AQY" customClass="OTOFAQContactCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qjv-Wv-AQY" id="Yam-VU-u3Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ik8-dT-Aie">
+                                            <rect key="frame" x="8" y="8" width="304" height="154"/>
+                                            <fontDescription key="fontDescription" name=".LucidaGrandeUI" family=".Lucida Grande UI" pointSize="11"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ik8-dT-Aie" firstAttribute="leading" secondItem="Yam-VU-u3Q" secondAttribute="leadingMargin" id="9dP-iW-6Eu"/>
+                                        <constraint firstItem="Ik8-dT-Aie" firstAttribute="top" secondItem="Yam-VU-u3Q" secondAttribute="topMargin" id="IgH-CL-BdI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ik8-dT-Aie" secondAttribute="bottom" id="VQa-2f-YRg"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ik8-dT-Aie" secondAttribute="trailing" id="wB2-Wa-5tg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contactTextView" destination="Ik8-dT-Aie" id="coH-3f-dwY"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="CBq-37-8Jh" id="UM1-A6-CfH"/>
@@ -70,7 +80,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="FAQs" id="c86-9Z-fZQ"/>
                     <connections>
-                        <outlet property="contactTextView" destination="Ik8-dT-Aie" id="vtb-fw-AtR"/>
                         <outlet property="searchDisplayController" destination="woa-re-AEI" id="MrA-tn-tSh"/>
                     </connections>
                 </tableViewController>

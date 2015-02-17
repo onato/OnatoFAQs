@@ -10,6 +10,7 @@
 #import "OTOFAQDetailViewController.h"
 #import "OTOHelpManager.h"
 #import "OTOFAQ.h"
+#import "OTOFAQContactCell.h"
 
 @interface OTOFAQTableViewController ()
 
@@ -54,34 +55,21 @@
     [self.helpManager GET:urlString
                   success:^(NSArray *faqs, NSString *contact)
     {
-              welf.filteredSearchResults = welf.helpManager.faqs;
+              welf.filteredSearchResults = faqs;
               [welf.tableView reloadData];
-              [welf setupFooter];
           } failure:^(NSURLResponse *response, NSError *connectionError) {
               NSLog(@"Error: %@", connectionError);
           }];
 }
 
-- (void)setupFooter
-{
-    self.contactTextView.textContainerInset = UIEdgeInsetsMake(25, 10, 0, 10);
-    [self.contactTextView setAttributedText:self.helpManager.attributedContact];
-
-    self.tableView.tableFooterView.frame = ({
-        CGRect frame = self.tableView.tableFooterView.frame;
-        frame.size = [self.contactTextView sizeThatFits:CGSizeMake(CGRectGetWidth(self.view.frame), FLT_MAX)];
-        frame;
-    });
-
-    // Force Resize
-    self.tableView.tableFooterView = self.tableView.tableFooterView;
-
-}
-
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@ OR detail CONTAINS[cd] %@", searchString, searchString];
-    self.filteredSearchResults = [self.helpManager.faqs filteredArrayUsingPredicate:predicate];
+    if (searchString.length == 0) {
+        self.filteredSearchResults = self.helpManager.faqs;
+    }else{
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@ OR detail CONTAINS[cd] %@", searchString, searchString];
+        self.filteredSearchResults = [self.helpManager.faqs filteredArrayUsingPredicate:predicate];
+    }
 
     return YES;
 }
@@ -94,32 +82,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
+    static NSString *ContactCellIdentifier = @"ContactCell";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
+    UITableViewCell *cell;
     OTOFAQ *faq;
-    if ([tableView isEqual:self.tableView]) {
-        if (indexPath.item < self.helpManager.faqs.count) {
-            faq = self.helpManager.faqs[indexPath.item];
-        }
-    }else{
-        if (indexPath.item < self.filteredSearchResults.count) {
-            faq = self.filteredSearchResults[indexPath.item];
-        }else{
-            UITextView *textView = [NSKeyedUnarchiver
-                            unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self.contactTextView]];
-            textView.textContainerInset = UIEdgeInsetsMake(25, 10, 0, 10);
-            [cell addSubview:textView];
-        }
-    }
-    
-    if (faq) {
+    if (indexPath.item < self.filteredSearchResults.count) {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        faq = self.filteredSearchResults[indexPath.item];
         NSCharacterSet *whiteSpaceAndNewlines = [NSCharacterSet whitespaceAndNewlineCharacterSet];
         NSString *title = [[faq.title substringFromIndex:1] stringByTrimmingCharactersInSet:whiteSpaceAndNewlines];
         [cell.textLabel setText:[NSString stringWithFormat:@"%@", title]];
     }else{
-        [cell.textLabel setText:@""];
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        OTOFAQContactCell *contactCell = [self.tableView dequeueReusableCellWithIdentifier:ContactCellIdentifier
+                                                                              forIndexPath:indexPath];
+        //[contactCell.contactTextView setText:self.helpManager.contact];
+        [contactCell.contactTextView setAttributedText:self.helpManager.attributedContact];
+        cell = contactCell;
     }
     
     return cell;
@@ -128,11 +107,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.item >= self.filteredSearchResults.count) {
-        if ([tableView isEqual:self.tableView]) {
-            return 0;
-        }else{
-            return CGRectGetHeight(self.contactTextView.frame);
-        }
+        return 150;
     }
     return 94;
 }
