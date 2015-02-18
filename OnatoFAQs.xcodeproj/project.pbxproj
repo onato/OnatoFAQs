@@ -13,7 +13,7 @@
 		DC2AFE64195DE97300383265 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC2AFE62195DE97300383265 /* InfoPlist.strings */; };
 		DC2AFE66195DE97300383265 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2AFE65195DE97300383265 /* main.m */; };
 		DC2AFE6A195DE97300383265 /* OTOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2AFE69195DE97300383265 /* OTOAppDelegate.m */; };
-		DC2AFE6D195DE97300383265 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC2AFE6B195DE97300383265 /* Main_iPhone.storyboard */; };
+		DC2AFE6D195DE97300383265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC2AFE6B195DE97300383265 /* Main.storyboard */; };
 		DC2AFE70195DE97300383265 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC2AFE6E195DE97300383265 /* Main_iPad.storyboard */; };
 		DC2AFE75195DE97300383265 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC2AFE74195DE97300383265 /* Images.xcassets */; };
 		DC2AFE7C195DE97300383265 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2AFE7B195DE97300383265 /* XCTest.framework */; };
@@ -52,7 +52,7 @@
 		DC2AFE67195DE97300383265 /* OnatoFAQs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnatoFAQs-Prefix.pch"; sourceTree = "<group>"; };
 		DC2AFE68195DE97300383265 /* OTOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTOAppDelegate.h; sourceTree = "<group>"; };
 		DC2AFE69195DE97300383265 /* OTOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTOAppDelegate.m; sourceTree = "<group>"; };
-		DC2AFE6C195DE97300383265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		DC2AFE6C195DE97300383265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC2AFE6F195DE97300383265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		DC2AFE74195DE97300383265 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DC2AFE7A195DE97300383265 /* OnatoFAQsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnatoFAQsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,7 +144,7 @@
 			children = (
 				DC2AFE68195DE97300383265 /* OTOAppDelegate.h */,
 				DC2AFE69195DE97300383265 /* OTOAppDelegate.m */,
-				DC2AFE6B195DE97300383265 /* Main_iPhone.storyboard */,
+				DC2AFE6B195DE97300383265 /* Main.storyboard */,
 				DC2AFE6E195DE97300383265 /* Main_iPad.storyboard */,
 				DC2AFE74195DE97300383265 /* Images.xcassets */,
 				DC2AFE60195DE97300383265 /* Supporting Files */,
@@ -272,7 +272,7 @@
 			files = (
 				DC2AFE70195DE97300383265 /* Main_iPad.storyboard in Resources */,
 				DC2AFE75195DE97300383265 /* Images.xcassets in Resources */,
-				DC2AFE6D195DE97300383265 /* Main_iPhone.storyboard in Resources */,
+				DC2AFE6D195DE97300383265 /* Main.storyboard in Resources */,
 				DC2AFE64195DE97300383265 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,12 +362,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DC2AFE6B195DE97300383265 /* Main_iPhone.storyboard */ = {
+		DC2AFE6B195DE97300383265 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DC2AFE6C195DE97300383265 /* Base */,
 			);
-			name = Main_iPhone.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		DC2AFE6E195DE97300383265 /* Main_iPad.storyboard */ = {

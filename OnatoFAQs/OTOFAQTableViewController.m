@@ -76,26 +76,41 @@
 
 #pragma mark - Table View
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.filteredSearchResults.count + 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 1;
+    }else if([tableView isEqual:self.tableView]) {
+        return self.helpManager.faqs.count;
+    }
+    return self.filteredSearchResults.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
     static NSString *ContactCellIdentifier = @"ContactCell";
     
 
     UITableViewCell *cell;
     OTOFAQ *faq;
-    if (indexPath.item < self.filteredSearchResults.count) {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        faq = self.filteredSearchResults[indexPath.item];
+    if (indexPath.section == 0) {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if ([tableView isEqual:self.tableView]) {
+            faq = self.helpManager.faqs[indexPath.item];
+        }else{
+            faq = self.filteredSearchResults[indexPath.item];
+        }
         NSCharacterSet *whiteSpaceAndNewlines = [NSCharacterSet whitespaceAndNewlineCharacterSet];
         NSString *title = [[faq.title substringFromIndex:1] stringByTrimmingCharactersInSet:whiteSpaceAndNewlines];
         [cell.textLabel setText:[NSString stringWithFormat:@"%@", title]];
     }else{
-        OTOFAQContactCell *contactCell = [self.tableView dequeueReusableCellWithIdentifier:ContactCellIdentifier
-                                                                              forIndexPath:indexPath];
+        OTOFAQContactCell *contactCell = [self.tableView dequeueReusableCellWithIdentifier:ContactCellIdentifier];
         //[contactCell.contactTextView setText:self.helpManager.contact];
         [contactCell.contactTextView setAttributedText:self.helpManager.attributedContact];
         cell = contactCell;
@@ -106,7 +121,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.item >= self.filteredSearchResults.count) {
+    if (indexPath.section == 1) {
         return 150;
     }
     return 94;
