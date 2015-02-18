@@ -26,6 +26,8 @@
 		DC2AFE99195DFF8800383265 /* OTOFAQDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2AFE98195DFF8800383265 /* OTOFAQDetailViewController.m */; };
 		DC2AFE9C195EC0DF00383265 /* OTOHelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2AFE9B195EC0DF00383265 /* OTOHelpManager.m */; };
 		DC943B591A94001900B15FF7 /* OTOFAQContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC943B581A94001900B15FF7 /* OTOFAQContactCell.m */; };
+		DC943B5B1A94A23200B15FF7 /* OTOFAQs.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC943B5A1A94A23200B15FF7 /* OTOFAQs.plist */; };
+		DC943B5D1A94A49400B15FF7 /* OTOFAQs-local.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC943B5C1A94A49400B15FF7 /* OTOFAQs-local.plist */; };
 		E2EBD8939F4A42738A338E17 /* libPods-OnatoFAQs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD2795D231843B69B7861A9 /* libPods-OnatoFAQs.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		DC2AFE9B195EC0DF00383265 /* OTOHelpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTOHelpManager.m; sourceTree = "<group>"; };
 		DC943B571A94001900B15FF7 /* OTOFAQContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTOFAQContactCell.h; sourceTree = "<group>"; };
 		DC943B581A94001900B15FF7 /* OTOFAQContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTOFAQContactCell.m; sourceTree = "<group>"; };
+		DC943B5A1A94A23200B15FF7 /* OTOFAQs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OTOFAQs.plist; sourceTree = "<group>"; };
+		DC943B5C1A94A49400B15FF7 /* OTOFAQs-local.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OTOFAQs-local.plist"; sourceTree = "<group>"; };
 		EBD2795D231843B69B7861A9 /* libPods-OnatoFAQs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnatoFAQs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -142,6 +146,8 @@
 		DC2AFE5F195DE97300383265 /* OnatoFAQs */ = {
 			isa = PBXGroup;
 			children = (
+				DC943B5A1A94A23200B15FF7 /* OTOFAQs.plist */,
+				DC943B5C1A94A49400B15FF7 /* OTOFAQs-local.plist */,
 				DC2AFE68195DE97300383265 /* OTOAppDelegate.h */,
 				DC2AFE69195DE97300383265 /* OTOAppDelegate.m */,
 				DC2AFE6B195DE97300383265 /* Main.storyboard */,
@@ -270,7 +276,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC943B5D1A94A49400B15FF7 /* OTOFAQs-local.plist in Resources */,
 				DC2AFE70195DE97300383265 /* Main_iPad.storyboard in Resources */,
+				DC943B5B1A94A23200B15FF7 /* OTOFAQs.plist in Resources */,
 				DC2AFE75195DE97300383265 /* Images.xcassets in Resources */,
 				DC2AFE6D195DE97300383265 /* Main.storyboard in Resources */,
 				DC2AFE64195DE97300383265 /* InfoPlist.strings in Resources */,

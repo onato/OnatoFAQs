@@ -21,35 +21,14 @@
 
 @implementation OTOFAQTableViewController
 
-- (NSString *)appName
-{
-    if (!_appName) {
-        NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
-        _appName = [infoDict objectForKey:@"OnatoHelpAppName"];
-        if (!_appName) {
-            _appName = [[NSBundle mainBundle] bundleIdentifier];
-        }
-    }
-    return _appName;
-}
-
-- (NSString *)language
-{
-    if (!_language) {
-        _language = [[NSLocale preferredLanguages] objectAtIndex:0];
-    }
-    return _language;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.helpManager = [[OTOHelpManager alloc] init];
 
     __weak typeof(self) welf = self;
-//    NSString *server = @"http://development.onato.com";
-    NSString *server = @"http://localhost:8888/";
-    NSString *urlString = [NSString stringWithFormat:@"%@/FAQs/json.php?appName=%@&language=%@",
+    NSString *server = [self configForKey:@"Server"];
+    NSString *urlString = [NSString stringWithFormat:[self configForKey:@"RequestURLFormat"],
                            server, self.appName, self.language];
 
     [self.helpManager GET:urlString
@@ -61,6 +40,10 @@
               NSLog(@"Error: %@", connectionError);
           }];
 }
+
+/////////////////////////////////////////////////////////////
+#pragma mark - Search
+/////////////////////////////////////////////////////////////
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
@@ -74,7 +57,9 @@
     return YES;
 }
 
+/////////////////////////////////////////////////////////////
 #pragma mark - Table View
+/////////////////////////////////////////////////////////////
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -134,6 +119,53 @@
 
     detailViewController.faq = faq;
     
+}
+
+/////////////////////////////////////////////////////////////
+#pragma mark - Config
+/////////////////////////////////////////////////////////////
+
+- (NSString *)appName
+{
+    if (!_appName) {
+        _appName = [self configForKey:@"AppName"];
+        if (!_appName) {
+            _appName = [[NSBundle mainBundle] bundleIdentifier];
+        }
+    }
+    return _appName;
+}
+
+- (NSString *)language
+{
+    if (!_language) {
+        /* Note: We just ask for the language. The server should check if it exist
+         and if not send a default language.
+         */
+        _language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    }
+    return _language;
+}
+
+- (NSString *)configForKey:(NSString *)key
+{
+    return [self configDict][key];
+}
+
+- (NSDictionary *)configDict
+{
+    NSString *fileName = @"OTOFAQs.plist";
+#ifdef DEBUG
+    NSString *debugFileName = @"OTOFAQs-local.plist";
+    NSString *pathAndFileName = [[NSBundle mainBundle] pathForResource:debugFileName ofType:nil];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:pathAndFileName])
+    {
+        fileName = debugFileName;
+    }
+#endif
+    
+    NSURL *file = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
+    return [NSDictionary dictionaryWithContentsOfURL:file];
 }
 
 @end
