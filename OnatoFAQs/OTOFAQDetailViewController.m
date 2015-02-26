@@ -23,4 +23,11 @@
     self.textView.textContainerInset = UIEdgeInsetsMake(5, 10, 0, 10);
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+#warning A better solution is needed for this since the user sees it scroll to the top.
+    [self.textView setContentOffset:CGPointMake(0, -self.topLayoutGuide.length) animated:YES];
+}
+
 @end
