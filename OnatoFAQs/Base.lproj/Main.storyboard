@@ -94,7 +94,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1263.75" y="43.309859154929576"/>
+            <point key="canvasLocation" x="993" y="43"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="aSZ-Nd-lL4">
@@ -111,25 +111,23 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOt-z2-Zdc">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aOt-z2-Zdc" firstAttribute="leading" secondItem="uhD-Hh-ybm" secondAttribute="leading" id="0EI-8l-yLn"/>
+                            <constraint firstItem="aOt-z2-Zdc" firstAttribute="top" secondItem="uhD-Hh-ybm" secondAttribute="topMargin" id="3tr-eh-8Gm"/>
                             <constraint firstItem="aOt-z2-Zdc" firstAttribute="top" secondItem="uhD-Hh-ybm" secondAttribute="top" id="KDB-wB-DLO"/>
                             <constraint firstItem="36j-KY-dFN" firstAttribute="top" secondItem="aOt-z2-Zdc" secondAttribute="bottom" id="eT5-cD-UXO"/>
                             <constraint firstAttribute="trailing" secondItem="aOt-z2-Zdc" secondAttribute="trailing" id="wmc-ma-y9z"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KDB-wB-DLO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="cWO-RL-VxA"/>
                     <connections>
@@ -138,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-Ti-yBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139.375" y="43.309859154929576"/>
+            <point key="canvasLocation" x="1702" y="43"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZdR-d3-0W6">

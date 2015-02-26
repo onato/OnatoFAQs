@@ -12,6 +12,8 @@
 #import "OTOFAQ.h"
 #import "OTOFAQContactCell.h"
 
+static const NSInteger kCONTACT_SECTION = 1;
+
 @interface OTOFAQTableViewController ()
 
 @property (nonatomic, strong) OTOHelpManager *helpManager;
@@ -68,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1) {
+    if (section == kCONTACT_SECTION) {
         return 1;
     }else if([tableView isEqual:self.tableView]) {
         return self.helpManager.faqs.count;
