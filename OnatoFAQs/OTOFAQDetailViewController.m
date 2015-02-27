@@ -19,15 +19,22 @@
 {
     [super viewDidLoad];
     
+    self.textView.scrollEnabled = NO;
     self.textView.attributedText = self.faq.attributedText;
     self.textView.textContainerInset = UIEdgeInsetsMake(5, 10, 0, 10);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    self.textView.scrollEnabled = YES;
     [super viewDidAppear:animated];
-#warning A better solution is needed for this since the user sees it scroll to the top.
-    [self.textView setContentOffset:CGPointMake(0, -self.topLayoutGuide.length) animated:YES];
+    
+    // 27th February 2015: This is a hack to make sure the the text view is scrolled
+    // to the top and redrawn correctly. The issues appeared when there was an image at the
+    // bottom of the screen that was not being drawn.
+    CGFloat topOffset = -self.topLayoutGuide.length;
+    [self.textView setContentOffset:CGPointMake(0, topOffset+1) animated:NO];
+    [self.textView setContentOffset:CGPointMake(0, topOffset) animated:YES];
 }
 
 @end
