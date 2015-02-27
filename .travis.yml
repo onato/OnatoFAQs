@@ -1,4 +1,15 @@
 language: objective-c
 xcode_workspace: OnatoFAQs.xcworkspace
 xcode_scheme: OnatoFAQs
+env:
+  global:
+  - APP_NAME="OnatoFAQs"
+  - 'DEVELOPER_NAME="iPhone Distribution: Stephen Williams (U37N5ZQC4Q)"'
+  - PROFILE_NAME="Onato_Global_Ad_Hoc"
+  - secure: FpStZB/rkHGuLDM7cUgN2pVUT9YWMwopGXuR7lpy81V01gZpLLByNiGhX9GUez3SPmwhCUZzHD4i1D+2k+0amhvKd6rsMZt2dK+36JWDMjqRD88ZykwOdBYX5IET9aKZxN29fEs9bQFgaUcPn3yUQixBIIpvQ29mt4UsJ/wakfs=
+
+before_script:
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/Onato_Global_Ad_Hoc.mobileprovision.enc -d -a -out scripts/profile/Onato_Global_Ad_Hoc.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 
