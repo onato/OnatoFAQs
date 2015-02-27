@@ -1,4 +1,4 @@
 language: objective-c
 xcode_workspace: OnatoFAQs.xcworkspace
-xcode_scheme: OnatoFAQsTests
+xcode_scheme: OnatoFAQs
 
