@@ -24,10 +24,14 @@
                            completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *connectionError) {
          NSError *error;
-         id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-         if ([jsonObject isKindOfClass:[NSDictionary class]]) {
-             [welf parseHelpDict:(NSDictionary *)jsonObject];
-             success(welf.faqs, welf.contact);
+         if (data) {
+             id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+             if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+                 [welf parseHelpDict:(NSDictionary *)jsonObject];
+                 success(welf.faqs, welf.contact);
+             }else{
+                 failure(response, connectionError);
+             }
          }else{
              failure(response, connectionError);
          }
@@ -59,6 +63,8 @@
 
 - (NSAttributedString *)attributedContact
 {
+    if (!self.contact) return nil;
+    
     NSString *markdown = [NSString stringWithFormat:@"%@", self.contact];
     
     NSError *error;
@@ -70,7 +76,8 @@
     NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:24.0]};
-    NSAttributedString *detail = [[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+    NSAttributedString *detail = [[NSAttributedString alloc] initWithData:data
                                                                   options:options
                                                        documentAttributes:&attributes
                                                                     error:&error];
