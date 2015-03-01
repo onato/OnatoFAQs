@@ -244,9 +244,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Onato;
 				TargetAttributes = {
-					DC2AFE55195DE97300383265 = {
-						DevelopmentTeam = U37N5ZQC4Q;
-					};
 					DC2AFE79195DE97300383265 = {
 						TestTargetID = DC2AFE55195DE97300383265;
 					};
@@ -481,11 +478,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Stephen Williams (U37N5ZQC4Q)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnatoFAQs/OnatoFAQs-Prefix.pch";
 				INFOPLIST_FILE = "OnatoFAQs/OnatoFAQs-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "78a847e2-1124-4745-ade1-dc9d7658fe48";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
