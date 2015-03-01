@@ -7,7 +7,7 @@ env:
   - 'DEVELOPER_NAME="iPhone Distribution: Stephen Williams (U37N5ZQC4Q)"'
   - PROFILE_NAME="Onato_Global_Ad_Hoc"
   - secure: FpStZB/rkHGuLDM7cUgN2pVUT9YWMwopGXuR7lpy81V01gZpLLByNiGhX9GUez3SPmwhCUZzHD4i1D+2k+0amhvKd6rsMZt2dK+36JWDMjqRD88ZykwOdBYX5IET9aKZxN29fEs9bQFgaUcPn3yUQixBIIpvQ29mt4UsJ/wakfs=
-
+  - secure: IpEbXr25CuRvYgh4gFz+9qgrUaHGFpBFL2EgTCXlIIOnQCq6qB7WBZjUojpu/tJTM1bmvVZkYr77lp1kz7m3P0oLEPXxLS+W54+FHsO5QcyNlB1sgXce9zKGixztN6uhz12DKFICecHjkp6kodF9ehs+eFCviNqzoSPqi8re3mo=
 before_script:
 - ./scripts/add-key.sh
 - ./scripts/update-bundle.sh
@@ -17,4 +17,3 @@ after_success:
 - ./scripts/sign-and-upload.sh
 after_script:
 - ./scripts/remove-key.sh
-
